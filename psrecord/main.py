@@ -31,10 +31,8 @@ import argparse
 
 
 def get_percent(process):
-    try:
-        return process.cpu_percent()
-    except AttributeError:
-        return process.get_cpu_percent()
+
+    return process.cpu_percent(interval=0.1)
 
 
 def get_memory(process):
@@ -232,3 +230,6 @@ def monitor(pid, logfile=None, plot=None, duration=None, interval=None,
             ax.grid()
 
             fig.savefig(plot)
+
+if __name__ == '__main__':
+    main()
